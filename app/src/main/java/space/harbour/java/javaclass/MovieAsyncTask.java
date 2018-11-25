@@ -15,6 +15,7 @@ import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGetHC4;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
@@ -72,12 +73,10 @@ public class MovieAsyncTask extends AsyncTask<Void, Void, Void> {
     private void getValuesFromApi() {
         String url_select = "https://api.myjson.com/bins/nfvfi";
 
-        ArrayList<NameValuePair> param = new ArrayList<>();
         try {
             HttpClient httpClient = new DefaultHttpClient();
 
-            HttpPost httpPost = new HttpPost(url_select);
-            httpPost.setEntity(new UrlEncodedFormEntity(param));
+            HttpGetHC4 httpPost = new HttpGetHC4(url_select);
             HttpResponse httpResponse = httpClient.execute(httpPost);
             HttpEntity httpEntity = httpResponse.getEntity();
 
